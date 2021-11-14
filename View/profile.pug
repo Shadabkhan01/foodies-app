@@ -1,0 +1,47 @@
+extends base
+block content 
+ .profileDisplay 
+  .picture 
+   img#PP(src=user.pImage)
+   input#profileImage(type='file' name='user')
+   label.icon(for='profileImage')
+    i.material-icons
+     | add_a_photo
+  .details
+    h1
+     | Name&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+     span.namespan #{user.name}
+    h1
+     | Email&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+     span.emailspan #{user.email}
+    h1
+     | Role&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+     span.namespan #{user.role}
+block scripts
+ script(src="./js/profileimage.js")
+
+ 
+//- extends base
+//- block content 
+//-  .signupSection
+//-   .info
+//-     h2 Mission to Deep Space
+//-     i.icon.ion-ios-ionic-outline(aria-hidden='true')
+//-     p The Future Is Here
+//-   form.signupForm(action='#' method='POST' name='signupform')
+//-     h2 User info
+//-     ul.noBullet
+//-       li
+//-         label(for='username')
+//-         input#username.inputFields(type='text' name='username' placeholder='Username' value='' oninput='return userNameValidation(this.value)' required='')
+//-       li
+//-         label(for='password')
+//-         input#password.inputFields(type='password' name='password' placeholder='Password' value='' oninput='return passwordValidation(this.value)' required='')
+//-       li
+//-         label(for='email')
+//-         input#email.inputFields(type='email' name='email' placeholder='Email' value='' required='')
+//-       li#center-btn
+//-         input#join-btn(type='submit' name='join' alt='Join' value='Join')
+
+//- block scripts
+//-  script(src="./js/profileimage.js")

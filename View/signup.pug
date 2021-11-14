@@ -1,0 +1,20 @@
+extends base.pug
+block content 
+ form.signupForm
+  h1.login.btn-grad.loginLogo SIGN UP
+  .entry
+    .entry-text Name
+    input#name(type='text' name='Email' placeholder='Your Name', required='')
+  .entry
+    .entry-text Email
+    input#email(type='email' name='Email' placeholder='Your Email' required='')
+  .entry
+    .entry-text Password
+    input#pw(type='password' placeholder='**********' name='password')
+  .entry
+    .entry-text Confirm Password
+    input#cpw(type='password' name='ConfirmPassword' placeholder='**********')
+  .btn-parent.signupButton
+    button.btn.btn-full.form-button.signupBtn Sign Up
+block scripts 
+ script(src = "./js/signup.js")
