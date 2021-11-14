@@ -6,5 +6,5 @@ const { createPaymentSession, checkoutComplete } = require("../Controller/bookin
 const bookingRouter = express.Router();
 
 bookingRouter.post("/createPaymentSession", protectRoute, createPaymentSession );
-boookingRouter.post("/checkoutComplete", checkoutComplete);
+bookingRouter.post("/checkoutComplete", checkoutComplete);
 module.exports = bookingRouter;
