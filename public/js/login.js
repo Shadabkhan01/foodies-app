@@ -10,7 +10,7 @@ forgetPwd.addEventListener("click", async  function(e){
         e.preventDefault();
         if(email.value){
             console.log("inside forget password click");
-            let obj = await axios.post("http://localhost:3000/api/user/forgetpassword", {email:email.value});
+            let obj = await axios.post("https://foodies7.herokuapp.com/api/user/forgetpassword", {email:email.value});
             console.log(obj);
         }
         else{
@@ -28,7 +28,7 @@ loginBtn.addEventListener("click", async function(e){
         e.preventDefault();//prevent page refresh
         console.log("inside login.js");
         if(email.value && pw.value){
-            let obj =await axios.post("http://localhost:3000/api/user/login", {email:email.value, password:pw.value});
+            let obj =await axios.post("https://foodies7.herokuapp.com/user/login", {email:email.value, password:pw.value});
             console.log(obj);
             if(obj.data.data){
                 window.location.href = "/";
