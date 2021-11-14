@@ -274,7 +274,7 @@ section {
     border-radius: 3%;
     width: 95%;/* //changed */
     padding: 3%;
-    height:45px;
+    /* height:45px; */
     margin-bottom: 3%;
   }
   textarea {
