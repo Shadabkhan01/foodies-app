@@ -28,7 +28,7 @@ loginBtn.addEventListener("click", async function(e){
         e.preventDefault();//prevent page refresh
         console.log("inside login.js");
         if(email.value && pw.value){
-            let obj =await axios.post("https://foodies7.herokuapp.com/user/login", {email:email.value, password:pw.value});
+            let obj =await axios.post("https://foodies7.herokuapp.com/api/user/login", {email:email.value, password:pw.value});
             console.log(obj);
             if(obj.data.data){
                 window.location.href = "/";
