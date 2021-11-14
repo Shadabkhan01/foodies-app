@@ -42,4 +42,8 @@ async function createPaymentSession(req, res){
     }
 }
 
+async function checkoutComplete(req, res){
+    console.log("checkout complete ran")
+}
 module.exports.createPaymentSession = createPaymentSession;
+module.exports.checkoutComplete = checkoutComplete;
