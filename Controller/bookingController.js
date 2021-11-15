@@ -14,6 +14,7 @@ async function createPaymentSession(req, res){
         const session = await stripeobj.checkout.sessions.create({
             payment_method_types: ['card'],
             customer_email:user.email,
+            client_reference_id: planId,
             line_items: [{
                 price_data: {
                     currency: 'usd',
@@ -43,19 +44,34 @@ async function createPaymentSession(req, res){
 }
 
 async function checkoutComplete(req, res){
-    const END_POINT_KEY = process.env.END_POINT_KEY;
-    // console.log("checkout complete ran");
-    // console.log(res);
-    const stripeSignature = req.headers['stripe-signature'];
-    let event;
     try{
-        event = stripeobj.webhooks.constructEvent(req.body, stripeSignature, END_POINT_KEY);
+        const END_POINT_KEY = process.env.END_POINT_KEY;
+        const stripeSignature = req.headers['stripe-signature'];
+
+        // console.log("checkout complete ran");
+        // console.log(res); 
+
+        console.log("endpoint key :", END_POINT_KEY);
+        console.log("stripesign", stripeSignature);
+        console.log("req.body=> ", req.body);
+
+        //if(req.body.data.type == "checkout.session.completed"){
+            const userEmail = req.body.data.object.customer_email;
+            const planId = req.body.data.object.client_reference_id;
+            await createNewBooking(userEmail, planId);
+        //}
     }
-    catch(err){
-        res.status(400).send(`Webhook Error: ${err.message}`);
+    
+    catch(error){
+        res.json({
+            error
+        })
     }
-    console.log("event obect !!!");
-    console.log(event);
+}
+async function createNewBooking(userEmail, planId){
+    console.log("inside create new booking !!!");
+    console.log(userEmail);
+    console.log(planId);
 }
 module.exports.createPaymentSession = createPaymentSession;
 module.exports.checkoutComplete = checkoutComplete;
