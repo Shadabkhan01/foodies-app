@@ -49,7 +49,7 @@ async function checkoutComplete(req, res){
     const stripeSignature = req.headers['stripe-signature'];
     let event;
     try{
-        event = stripe.webhooks.constructEvent(req.body, stripeSignature, END_POINT_KEY);
+        event = stripeobj.webhooks.constructEvent(req.body, stripeSignature, END_POINT_KEY);
     }
     catch(err){
         res.status(400).send(`Webhook Error: ${err.message}`);
