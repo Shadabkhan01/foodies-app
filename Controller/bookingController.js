@@ -55,12 +55,12 @@ async function checkoutComplete(req, res){
         console.log("stripesign", stripeSignature);
         console.log("req.body=> ", req.body);
 
-        if(req.body.data.type == "checkout.session.completed"){
+        // if(req.body.data.type == "checkout.session.completed"){
             console.log("inside req.body.data.type ", req.body.data.type);
             const userEmail = req.body.data.object.customer_email;
             const planId = req.body.data.object.client_reference_id;
             await createNewBooking(userEmail, planId);
-        }
+        // }
     }
     
     catch(error){
