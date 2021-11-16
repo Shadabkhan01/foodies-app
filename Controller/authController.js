@@ -197,7 +197,7 @@ async function forgetPassword(req, res){
             console.log(token);
             let updatedUser = await user.save({validateBeforeSave:false});
             //console.log(updatedUser);
-            let resetLink = `http://localhost:3000/resetpassword/${token}`;
+            let resetLink = `https://foodies7.herokuapp.com/resetpassword/${token}`;
             let message = {
                 from:"sksksksksk01@gmail.com",
                 to:email,
