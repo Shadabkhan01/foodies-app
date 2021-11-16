@@ -56,7 +56,7 @@ async function checkoutComplete(req, res){
         console.log("req.body=> ", req.body);
 
         // if(req.body.data.type == "checkout.session.completed"){
-            console.log("inside req.body.data.type ", req.body.data.type);
+            console.log("inside req.body.type ", req.body.type);
             const userEmail = req.body.data.object.customer_email;
             const planId = req.body.data.object.client_reference_id;
             await createNewBooking(userEmail, planId);
