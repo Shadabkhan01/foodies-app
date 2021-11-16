@@ -8,7 +8,7 @@ let isDeleting = false;
 
 let showcase = document.querySelector(".showcase");
 let navlinks = document.querySelector(".navlinks");
-let details = document.querySelector(".details");
+let details = document.querySelector(".detailshead");
 let reviews = document.querySelector(".reviews");
 
 details.addEventListener("click", function(){
