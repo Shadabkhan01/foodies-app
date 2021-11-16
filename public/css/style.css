@@ -560,7 +560,9 @@ cursor: pointer;
   width: 100%;
   z-index: 3;
 }
-
+.headerposition a{
+  color: #F63854;
+}
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
 
 
