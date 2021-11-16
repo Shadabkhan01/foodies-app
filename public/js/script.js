@@ -8,8 +8,8 @@ let isDeleting = false;
 
 let showcase = document.querySelector(".showcase");
 let navlinks = document.querySelector(".navlinks");
-let details = document.querySelector("details");
-let reviews = document.querySelector("reviews");
+let details = document.querySelector(".details");
+let reviews = document.querySelector(".reviews");
 
 details.addEventListener("click", function(){
     window.scrollTo(0, 2625);  
