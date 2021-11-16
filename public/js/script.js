@@ -12,11 +12,11 @@ let details = document.querySelector(".detailshead");
 let reviews = document.querySelector(".reviews");
 
 details.addEventListener("click", function(){
-    window.scrollTo(0, 2650);  
+    window.scrollTo(0, 2700);  
 })
 
 reviews.addEventListener("click", function(){
-    window.scrollTo(0, 1900);  
+    window.scrollTo(0, 1950);  
 })
 
 
