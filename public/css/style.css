@@ -3,6 +3,7 @@
     margin: 0px;
     padding: 0px;
     font-family: 'Lato', sans-serif;
+    scroll-behavior: smooth;
 }
 
 #changing-text{
@@ -562,6 +563,14 @@ cursor: pointer;
 }
 .headerposition a{
   color: #F63854;
+}
+
+.showcase-li.reviews{
+  cursor: pointer;
+}
+
+.showcase-li.details{
+  cursor: pointer;
 }
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
 
