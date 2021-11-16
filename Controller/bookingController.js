@@ -55,12 +55,11 @@ async function checkoutComplete(req, res){
         console.log("stripesign", stripeSignature);
         console.log("req.body=> ", req.body);
 
-        // if(req.body.data.type == "checkout.session.completed"){
-            console.log("inside req.body.type ", req.body.type);
+        if(req.body.type == "checkout.session.completed"){
             const userEmail = req.body.data.object.customer_email;
             const planId = req.body.data.object.client_reference_id;
             await createNewBooking(userEmail, planId);
-        // }
+        }
     }
     
     catch(error){
@@ -71,7 +70,7 @@ async function checkoutComplete(req, res){
 }
 async function createNewBooking(userEmail, planId){
     try{
-        console.log("inside createNewBooking function")
+
         const user = await usersModel.findOne({email:userEmail});
         const plan = await plansModel.findById(planId);
 
