@@ -55,11 +55,11 @@ async function checkoutComplete(req, res){
         console.log("stripesign", stripeSignature);
         console.log("req.body=> ", req.body);
 
-        //if(req.body.data.type == "checkout.session.completed"){
+        if(req.body.data.type == "checkout.session.completed"){
             const userEmail = req.body.data.object.customer_email;
             const planId = req.body.data.object.client_reference_id;
             await createNewBooking(userEmail, planId);
-        //}
+        }
     }
     
     catch(error){
@@ -69,9 +69,43 @@ async function checkoutComplete(req, res){
     }
 }
 async function createNewBooking(userEmail, planId){
-    console.log("inside create new booking !!!");
-    console.log(userEmail);
-    console.log(planId);
+    try{
+        const user = await usersModel.findOne({email:userEmail});
+        const plan = await plansModel.findById(planId);
+
+        const userId = user["_id"];
+
+        if(user.bookedPlanId == undefined){
+            const bookingOrder = {
+                userId:userId,
+                bookedPlans:[{planId:planId, planName:plan.name, currentPrice:plan.price}]
+            }
+            const newBookingOrder = await bookingModel.create(bookingOrder);
+            user.bookedPlanId = newBookingOrder["_id"];
+            await user.save({validateBeforeSave:false});
+        }
+        else{
+            //already bought some plans
+            const newBookedPlan = {
+                planId : planId,
+                planName : plan.name,
+                currentPrice: plan.price,
+
+            }
+            const userBookingObject = await bookingModel.findById(user.bookedPlanId);
+            userBookingObject.bookedPlans.push(newBookedPlan);
+            await userBookingObject.save();
+        }
+
+    }
+    catch(error){
+        res.json({
+            error
+        })
+    }
+    // console.log("inside create new booking !!!");
+    // console.log(userEmail);
+    // console.log(planId);
 }
 module.exports.createPaymentSession = createPaymentSession;
 module.exports.checkoutComplete = checkoutComplete;
