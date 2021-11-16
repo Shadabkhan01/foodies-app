@@ -15,11 +15,11 @@ window.addEventListener("load", function(){
     window.addEventListener("scroll", function(){
         let {bottom} = showcase.getBoundingClientRect();
         if(bottom <= 0){
-            navlinks.classList.add("fixed");
+            navlinks.classList.add("headerposition");
         }
         else{
-            if(navlinks.classList.contains("fixed")){
-                navlinks.classList.remove("fixed");
+            if(navlinks.classList.contains("headerposition")){
+                navlinks.classList.remove("headerposition");
             }
         }
     })
