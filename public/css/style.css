@@ -556,6 +556,8 @@ cursor: pointer;
 
 .headerposition{
   position: fixed;
+  background: white;
+  width: 100%;
   z-index: 3;
 }
 
